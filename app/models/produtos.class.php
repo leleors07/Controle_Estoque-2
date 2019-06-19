@@ -11,7 +11,7 @@
    	
    	public function index($value)
    	{
-   		$this->query = "SELECT * FROM `produtos` WHERE `publicproduto` = '$value'";
+   		$this->query = "SELECT * FROM `produto` WHERE `publicproduto` = '$value'";
    		$this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
 
    		if($this->result){
@@ -27,10 +27,10 @@
             <i class="fa fa-ellipsis-v"></i>
           </span>
           <!-- checkbox -->
-          <form class="label" name="ativ'.$row['codrefproduto'].'" action="../../App/Database/action.php" method="post">
-                    <input type="hidden" name="id" id="id" value="'.$row['codrefproduto'].'">
+          <form class="label" name="ativ'.$row['codigorefprod'].'" action="../../App/Database/action.php" method="post">
+                    <input type="hidden" name="id" id="id" value="'.$row['codigorefprod'].'">
                     <input type="hidden" name="status" id="status" value="'.$row['Ativo'].'">
-                    <input type="hidden" name="tabela" id="tabela" value="produtos">                  
+                    <input type="hidden" name="tabela" id="tabela" value="produto">                  
                     <input type="checkbox" id="status" name="status" ';
 
                      if($row['Ativo'] == 1){ echo 'checked'; } 
@@ -38,24 +38,24 @@
                     echo ' value="'.$row['Ativo'].'" onclick="this.form.submit();" /></form>
           
           <!-- todo text -->
-          <span class="text"><span class="badge left">'.$row['Codrefproduto'].'</span> '.$row['nomeproduto'].'</span>
+          <span class="text"><span class="badge left">'.$row['codigorefprod'].'</span> '.$row['nomeproduto'].'</span>
           <!-- Emphasis label -->
           <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
           <!-- General tools such as edit or delete-->
           <div class="tools right">
 
-                      <a href="" data-toggle="modal" data-target="#myModalup'.$row['codrefproduto'].'"><i class="fa fa-edit"></i></a> 
+                      <a href="" data-toggle="modal" data-target="#myModalup'.$row['codigorefprod'].'"><i class="fa fa-edit"></i></a> 
                     
                       <!-- Button trigger modal -->
-                    <a href="" data-toggle="modal" data-target="#myModal'.$row['codrefproduto'].'">';
+                    <a href="" data-toggle="modal" data-target="#myModal'.$row['codigorefprod'].'">';
 
                     if($row['PublicProduto'] == 0){echo '<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>';}else{ echo '<i class="glyphicon glyphicon-ok" aria-hidden="true"></i>';}
 
                     echo '</a> </div>
 
     <!-- Modal -->
-  <div class="modal fade" id="myModal'.$row['codrefproduto'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="delprod'.$row['codrefproduto'].'" name="delprod'.$row['codrefproduto'].'" action="../../App/Database/delprod.php" method="post" style="color:#000;">
+  <div class="modal fade" id="myModal'.$row['codigorefprod'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <form id="delprod'.$row['codigorefprod'].'" name="delprod'.$row['codigorefprod'].'" action="../../App/Database/delprod.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -66,7 +66,7 @@
           <div class="modal-body">
             Nome: '.$row['nomeproduto'].'
           </div>
-          <input type="hidden" id="id" name="id" value="'.$row['codrefproduto'].'">
+          <input type="hidden" id="id" name="id" value="'.$row['codigorefprod'].'">
           <div class="modal-footer">
             <button type="submit" value="Cancelar" class="btn btn-default">Não</button>
             <button type="submit" name="update" value="Cadastrar" class="btn btn-primary">Sim</button>
@@ -78,8 +78,8 @@
 
 
       <!-- Modal UPDATE -->
-  <div class="modal fade" id="myModalup'.$row['codrefproduto'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="Upprod'.$row['codrefproduto'].'" name="Upprod'.$row['codrefproduto'].'" action="../../App/Database/insertprod.php" method="post" style="color:#000;">
+  <div class="modal fade" id="myModalup'.$row['codigorefprod'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <form id="Upprod'.$row['codigorefprod'].'" name="Upprod'.$row['codigorefprod'].'" action="../../App/Database/insertprod.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -89,9 +89,9 @@
           </div>
           <div class="modal-body">
             Nome Atual:
-            <input type="text" id="nomeProduto" name="nomeProduto" value="'.$row['NomeProduto'].'">
+            <input type="text" id="nomeproduto" name="nomeproduto" value="'.$row['nomeproduto'].'">
           </div>
-          <input type="hidden" id="id" name="id" value="'.$row['CodRefProduto'].'">
+          <input type="hidden" id="id" name="id" value="'.$row['codigorefprod'].'">
           
           <div class="modal-footer">
             <button type="submit" value="Cancelar" class="btn btn-default">Não</button>
@@ -112,26 +112,26 @@
 
   public function listProdutos(){
 
-   $this->query = "SELECT *FROM `produtos` WHERE `Ativo` = 1 AND `PublicProduto` = 1";
+   $this->query = "SELECT *FROM `produto` WHERE `Ativo` = 1 AND `PublicProduto` = 1";
    $this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
 
    if($this->result){
 
     while ($row = mysqli_fetch_array($this->result)) {
-      if($value == $row['CodRefProduto']){ 
+      if($value == $row['codigorefprod']){ 
         $selected = "selected";
       }else{
         $selected = "";
       }
-      echo '<option value="'.$row['CodRefProduto'].'" '.$selected.' >'.$row['NomeProduto'].'</option>';
+      echo '<option value="'.$row['codigorefprod'].'" '.$selected.' >'.$row['nomeproduto'].'</option>';
     }
 
   }
   }
 
-  public function InsertProd($nomeProduto, $idUsuario){
+  public function InsertProd($nomeproduto, $idusuario){
 
-   $this->query = "INSERT INTO `produtos`(`CodRefProduto`, `NomeProduto`,`Ativo` ,`PublicProduto` , `Usuario_idUser`) VALUES (NULL,'$nomeProduto', 1 , 1 ,'$idUsuario')";
+   $this->query = "INSERT INTO `produto`(`codigorefprod`, `nomeproduto`,`Ativo` ,`PublicProduto` , `usuario_iduser`) VALUES (NULL,'$nomeproduto', 1 , 1 ,'$idusuario')";
    if($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))){
 
     header('Location: ../../views/prod/index.php?alert=1');
@@ -140,9 +140,9 @@
   }
   }
 
-  public function UpdateProd($id, $nomeProduto, $idUsuario)
+  public function UpdateProd($id, $nomeproduto, $idusuario)
   {
-      if(mysqli_query($this->SQL, "UPDATE `produtos` SET `NomeProduto` = '$nomeProduto', `Usuario_idUser` = '$idUsuario' WHERE `CodRefProduto` = '$id'") or die(mysqli_error($this->SQL))){
+      if(mysqli_query($this->SQL, "UPDATE `produto` SET `nomeproduto` = '$nomeproduto', `usuario_iduser` = '$idusuario' WHERE `codigorefprod` = '$id'") or die(mysqli_error($this->SQL))){
 
                 header('Location: ../../views/prod/index.php?alert=1');
       }else{
@@ -154,11 +154,11 @@
   public function DelProdutos($value)
       {
 
-        $this->query = "SELECT * FROM `produtos` WHERE `CodRefProduto` = '$value'";
+        $this->query = "SELECT * FROM `produto` WHERE `codigorefprod` = '$value'";
         $this->result = mysqli_query($this->SQL, $this->query);
         if($row = mysqli_fetch_array($this->result)){
 
-                $id = $row['CodRefProduto'];
+                $id = $row['codigorefprod'];
                 $public = $row['PublicProduto'];
 
                 if($public == 1){
@@ -167,7 +167,7 @@
                   $p = 1;
                 }
 
-                mysqli_query($this->SQL, "UPDATE `produtos` SET `PublicProduto` = '$p' WHERE `CodRefProduto` = '$id'") or die(mysqli_error($this->SQL));
+                mysqli_query($this->SQL, "UPDATE `produto` SET `PublicProduto` = '$p' WHERE `codigorefprod` = '$id'") or die(mysqli_error($this->SQL));
                 header('Location: ../../views/prod/index.php?alert=1');
         }else{
                 header('Location: ../../views/prod/index.php?alert=0');
@@ -179,7 +179,7 @@
 
     if($value == 0){ $v = 1; }else{ $v = 0; }
 
-    $this->query = "UPDATE `produtos` SET `Ativo` = '$v' WHERE `CodRefProduto` = '$id'";
+    $this->query = "UPDATE `produto` SET `Ativo` = '$v' WHERE `codigorefprod` = '$id'";
     $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
 
     header('Location: ../../views/prod/');

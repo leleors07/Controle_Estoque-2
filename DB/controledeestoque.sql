@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05-Jun-2019 às 19:52
+-- Generation Time: 10-Jun-2019 às 22:55
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -33,6 +33,7 @@ CREATE TABLE `fabricante` (
   `nomefabricante` varchar(75) NOT NULL,
   `CNPJfabricante` varchar(16) NOT NULL,
   `emailfabricante` varchar(75) NOT NULL,
+  `enderecofabricante` text NOT NULL,
   `telefonefabricante` varchar(16) NOT NULL,
   `usuario_iduser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,8 +42,8 @@ CREATE TABLE `fabricante` (
 -- Extraindo dados da tabela `fabricante`
 --
 
-INSERT INTO `fabricante` (`idfabricante`, `nomefabricante`, `CNPJfabricante`, `emailfabricante`, `telefonefabricante`, `usuario_iduser`) VALUES
-(1, 'matheus', '0000000000000', 'fb@bg.com', '1444444444', 1);
+INSERT INTO `fabricante` (`idfabricante`, `nomefabricante`, `CNPJfabricante`, `emailfabricante`, `enderecofabricante`, `telefonefabricante`, `usuario_iduser`) VALUES
+(1, 'matheus', '0000000000000', 'fb@bg.com', '', '1444444444', 1);
 
 -- --------------------------------------------------------
 
@@ -88,6 +89,7 @@ CREATE TABLE `representante` (
   `emailrepresentante` varchar(45) NOT NULL,
   `telefonerepresentante` varchar(16) NOT NULL,
   `fabricante_idfabricante` int(11) NOT NULL,
+  `enderecofabricante` text NOT NULL,
   `usuario_iduser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

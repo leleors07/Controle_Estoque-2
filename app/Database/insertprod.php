@@ -4,16 +4,16 @@ require_once '../Models/produtos.class.php';
 
 	if(isset($_POST['update']) == 'Cadastrar'){
 
-		$nomeProduto = $_POST['nomeproduto'];
+		$nomeproduto = $_POST['nomeproduto'];
 
 		$iduser = $_POST['iduser'];
 
-		if($nomeProduto != NULL){
+		if($nomeproduto != NULL){
 
-			if(isset($_POST['id']) != NULL && $idUsuario != NULL){
+			if(isset($_POST['id']) != NULL && $idusuario != NULL){
 				$id = $_POST['id'];
 				$produtos->UpdateProd($id, $nomeproduto, $idusuario);
-			}elseif($iduser == $idUsuario){
+			}elseif($iduser == $idusuario){
 				$produtos->Insertprod($nomeproduto, $idusuario);
 			}
 			

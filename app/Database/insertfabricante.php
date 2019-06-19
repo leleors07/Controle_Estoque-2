@@ -11,7 +11,6 @@ $CNPJfabricante = $_POST['CNPJfabricante'];
 $emailfabricante = $_POST['emailfabricante'];
 $enderecofabricante = $_POST['enderecofabricante'];
 $telefonefabricante = $_POST['telefonefabricante'];
-$Public = $_POST['Public'];
 $status = 1;
 
 //--Representante--//

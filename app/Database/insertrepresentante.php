@@ -5,18 +5,18 @@ require_once '../Models/representante.class.php';
 if(isset($_POST['update']) == 'Cadastrar'){
 
 //--Representante--//
-$NomeRepresentante = $_POST['NomeRepresentante'];
-$TelefoneRepresentante = $_POST['TelefoneRepresentante'];
-$EmailRepresentante = $_POST['EmailRepresentante'];
-$idFabricante = $_POST['idFabricante'];
+$nomerepresentante = $_POST['Nomerepresentante'];
+$telefonerepresentante = $_POST['telefonerepresentante'];
+$emailrepresentante = $_POST['emailrepresentante'];
+$idfabricante = $_POST['idfabricante'];
 
 
 
-if($idUsuario != NULL && $idFabricante != NULL && $NomeRepresentante != NULL && $TelefoneRepresentante != NULL && $EmailRepresentante != NULL){
+if($idusuario != NULL && $idfabricante != NULL && $nomerepresentante != NULL && $telefonerepresentante != NULL && $emailrepresentante != NULL){
 
-		if (isset($_POST['idRepresentante'])){
+		if (isset($_POST['idrepresentante'])){
 
-			$idRepresentante = $_POST['idRepresentante'];
+			$idrepresentante = $_POST['idrepresentante'];
 
 						$representante->UpdateRepresentante($idRepresentante, $NomeRepresentante, $TelefoneRepresentante, $EmailRepresentante, $idUsuario);		
 			
